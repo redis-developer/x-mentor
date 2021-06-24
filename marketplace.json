@@ -10,10 +10,10 @@
     "quick_deploy": "true",
     "deploy_buttons": [
         {
-            "heroku": "https://heroku.com/deploy?template=https://github.com/redis-developer/nycbike.git" 
+            "heroku": "https://heroku.com/deploy?template=https://github.com/redis-developer/x-mentor.git" 
         },
         {
-            "Google": "https://deploy.cloud.run/?git_repo=https://github.com/redis-developer/nycbike.git" 
+            "Google": "https://deploy.cloud.run/?git_repo=https://github.com/redis-developer/x-mentor.git" 
         }
     ],
     "language": ["Scala", "Python"],
