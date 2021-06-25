@@ -2,6 +2,7 @@
     "app_name": "X-Mentor - An e-Learning Platform",
     "description": "An e-Learning platform powered by RediSearch + RedisJSON + RedisGraph + RedisTimeSeries + RedisBloom + RedisGears",
     "rank": 53,
+    "hidden" : "true",
     "type": "Full App",
     "contributed_by": "Community",
     "repo_url": "https://github.com/redis-developer/x-mentor",
