@@ -23,7 +23,7 @@
     "redis_modules": ["RedisGraph", "RediSearch", "RedisJSON", "RedisTimeseries", "RedisBloom", "RedisGears"],
     "app_image_urls": ["https://github.com/redis-developer/x-mentor/blob/develop/screenshots/CourseListPage.png?raw=true", "https://github.com/redis-developer/x-mentor/blob/develop/screenshots/CoursePage.png?raw=true", "https://github.com/serdeliverance/x-mentor/blob/develop/screenshots/HomePage.png?raw=true"],
     "youtube_url": "https://www.youtube.com/watch?v=7k1EXPh3m4s",
-    "special_tags": ["Hackathon","MOOC", "E-learning"],
+    "special_tags": ["Hackathon"],
     "verticals": ["Others"],
     "markdown": "https://raw.githubusercontent.com/redis-developer/x-mentor/main/README.md"
 }
