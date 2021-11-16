@@ -21,7 +21,7 @@
     "redis_commands": ["GET", "SET", "INCR", "XADD", "RPUSH", "BF.EXISTS", "BF.ADD", "GRAPH.QUERY", "TS.CREATE", "TS.ADD", "TS.RANGE", "JSON.GET", "JSON.SET", "FT.CREATE", "FT.SEARCH"],
     "redis_features": ["Caching", "Streams"],
     "redis_modules": ["RedisGraph", "RediSearch", "RedisJSON", "RedisTimeSeries", "RedisBloom", "RedisGears"],
-    "app_image_urls": ["https://github.com/redis-developer/x-mentor/blob/develop/screenshots/CourseListPage.png?raw=true", "https://github.com/redis-developer/x-mentor/blob/develop/screenshots/CoursePage.png?raw=true", "https://github.com/serdeliverance/x-mentor/blob/develop/screenshots/HomePage.png?raw=true"],
+    "app_image_urls": ["https://github.com/redis-developer/x-mentor/blob/develop/screenshots/CourseListPage.png?raw=true"],
     "youtube_url": "https://www.youtube.com/watch?v=7k1EXPh3m4s",
     "special_tags": ["Hackathon"],
     "verticals": ["Others"],
