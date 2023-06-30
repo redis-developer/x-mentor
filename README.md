@@ -47,7 +47,7 @@ X-Mentor is an e-Learning platform which not only tries to connect students and 
 * RediStreams
 * Redis Blooms
 * Redis Gears
-* RediSearch
+* Redis Search
 * Redis JSON
 * Redis TimeSeries
 * Keycloak
@@ -98,7 +98,7 @@ Starts the authentication process against Keycloak
 * Verifies if username already exists in `users` bloom filter
 ```
 BF.EXISTS users '${student.username}'
-``` 
+```
 
 ![Login](https://github.com/serdeliverance/x-mentor/blob/develop/diagrams/login.png?raw=true)
 
@@ -145,33 +145,33 @@ Creates a course which is going to be stored as a JSON in redisJSON
 * Gets the last course id from redis key `course-last-index`
 ```
 GET course-last-index
-``` 
+```
 
 * Increases course id key in 1
 ```
 INCR course-last-index
-``` 
+```
 
 * Stores course as JSON in redisJSON
 ```
 JSON.SET course:${course.id} . '${course.asJson}'
-``` 
+```
 
 * Adds course id to `courses` bloom filter
 ```
 BF.ADD coourses '${course.id}'
-``` 
+```
 
 * Creates course in the graph
 ```
 GRAPH.QUERY xmentor "CREATE (:Course {name: '${course.title}', id: '${course.id.get}', preview: '${course.preview}'})"
-``` 
+```
 
 * Publishes `course-created` event which sends notifications by Server Sent Event to the frontend
 ```
 XADD course-created $timestamp title ${course.title} topic ${course.topic}
-``` 
-    
+```
+
 ### Course Enrollment
 
 Enrolls a student in a specific course
@@ -185,17 +185,17 @@ Enrolls a student in a specific course
 * Verifies if a student exists in `users` bloom filter
 ```
 BF.EXISTS users ${student.username}
-``` 
+```
 
 * Gets course as JSON from redisJSON
 ```
 JSON.GET course:${course.id}
-``` 
+```
 
 * Creates studying relation between the student and the course in redisGraph
 ```
 GRAPH.QUERY xmentor "MATCH (s:Student), (c:Course) WHERE s.username = '${studying.student}' AND c.name = '${studying.course}' CREATE (s)-[:studying]->(c)"
-``` 
+```
 
 ### Course Review (Rating)
 
@@ -216,7 +216,7 @@ The commands are used:
 
 ```
 GRAPH.QUERY xmentor "MATCH (student)-[:studying]->(course) where student.username = '$student' RETURN course"
-``` 
+```
 
 * Get courses rated by user
 
@@ -243,7 +243,7 @@ Retrieves courses by query from redisJSON with rediSearch
 
 ```
 FT.SEARCH courses-idx ${query}*
-``` 
+```
 
 #### By ID
 
@@ -251,7 +251,7 @@ FT.SEARCH courses-idx ${query}*
 BF.EXISTS courses ${course.id}
 
 JSON.GET course:${course.id}
-``` 
+```
 
 #### By Student
 
@@ -415,7 +415,7 @@ When the user request for the leaderboard data, we first look at `Redis` for the
 LRANGE student-progress-list 0 -1		// to retrieve all the list elements
 ```
 
-For each key, we use `Redis TimeSeries` to get the range of samples in a time window of three months performing sum aggregation. 
+For each key, we use `Redis TimeSeries` to get the range of samples in a time window of three months performing sum aggregation.
 
 ```
 TS.RANGE $student_key $thee_months_back_timestamp $timestamp AGGREGATION sum 1000
